@@ -69,7 +69,7 @@ class SUPERADMIN
         DATE_DEFAULT_TIMEZONE_SET('Asia/Manila');
         $activity = "Has successfully signed in";
         $date_now = date("Y-m-d h:i:s A");
-        $user = "Superadmin $Uname";
+        $user = "Superadmin-$Uname";
 
         $stmt = $this->conn->prepare("INSERT INTO tb_logs (user, email, activity, date) VALUES (:user, :email, :activity, :date)");
         $stmt->execute(array(":user"=>$user,":email"=>$email,":activity"=>$activity,":date"=>$date_now));
@@ -120,8 +120,7 @@ class SUPERADMIN
  public function logout()
  {
 
-  session_destroy();
-  $_SESSION['superadminSession'] = false;
+   unset($_SESSION['superadminSession']);
  }
  
  function send_mail($email,$message,$subject,$smtp_email,$smtp_password,$system_name)

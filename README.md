@@ -33,4 +33,7 @@ The admin side is not updated yet, there's no profile update and the CSS is outd
     - email: andreishania07012000@gmail.com
     - Password: User123
 
+    # GIT KEY
+    -- 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
+
 If any error occurs, contact Andrei M. Viscayno.

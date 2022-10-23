@@ -15,7 +15,7 @@ $stmt->execute(array(":uid"=>$_SESSION['userSession']));
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-    $profile                      = "profile.png";
+    $profile                      = "green-profile.png";
 
     $pdoQuery = 'UPDATE user SET userProfile=:profile WHERE userId=' . $_GET['userId'];
     $pdoResult = $pdoConnect->prepare($pdoQuery);

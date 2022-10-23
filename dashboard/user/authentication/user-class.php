@@ -33,15 +33,15 @@ class USER
   return $stmt;
  }
  
- public function register($employeeId,$first_name,$middle_name,$last_name,$phone_number,$email,$upass,$tokencode,$uniqueID)
+ public function register($type_of_customer,$first_name,$middle_name,$last_name,$phone_number,$email,$upass,$tokencode,$uniqueID)
  {
   try
   {       
    $password = md5($upass);
-   $stmt = $this->conn->prepare("INSERT INTO user(employeeId,userFirst_Name,userMiddle_Name,userLast_Name,userPhone_Number,userEmail,userPassword,tokencode,uniqueID) 
-                                        VALUES(:employeeId,:userFirst_Name,:userMiddle_Name,:userLast_Name,:userPhone_Number,:userEmail,:userPassword,:tokencode,:uniqueID)");
+   $stmt = $this->conn->prepare("INSERT INTO user(type_of_customer,userFirst_Name,userMiddle_Name,userLast_Name,userPhone_Number,userEmail,userPassword,tokencode,uniqueID) 
+                                        VALUES(:type_of_customer,:userFirst_Name,:userMiddle_Name,:userLast_Name,:userPhone_Number,:userEmail,:userPassword,:tokencode,:uniqueID)");
    
-   $stmt->bindparam(":employeeId",$employeeId);
+   $stmt->bindparam(":type_of_customer",$type_of_customer);
    $stmt->bindparam(":userFirst_Name",$first_name);
    $stmt->bindparam(":userMiddle_Name",$middle_name);
    $stmt->bindparam(":userLast_Name",$last_name);
@@ -63,8 +63,8 @@ class USER
  {
   try
   {
-   $stmt = $this->conn->prepare("SELECT * FROM user WHERE userEmail=:email_id");
-   $stmt->execute(array(":email_id"=>$email));
+   $stmt = $this->conn->prepare("SELECT * FROM user WHERE userEmail=:email_id AND account_status = :account_status");
+   $stmt->execute(array(":email_id"=>$email , ":account_status" => "active"));
    $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
    $Uname = $userRow['userEmail'];
    
@@ -78,7 +78,7 @@ class USER
       DATE_DEFAULT_TIMEZONE_SET('Asia/Manila');
       $activity = "Has successfully signed in";
       $date_now = date("Y-m-d h:i:s A");
-      $user = "User $Uname";
+      $user = "User-$Uname";
   
       $stmt = $this->conn->prepare("INSERT INTO tb_logs (user, email, activity, date) VALUES (:user, :email, :activity, :date)");
       $stmt->execute(array(":user"=>$user,":email"=>$email,":activity"=>$activity,":date"=>$date_now));
@@ -109,7 +109,7 @@ class USER
    else
    {
     $_SESSION['status_title'] = "Sorry !";
-    $_SESSION['status'] = "Email or Password is incorrect.";
+    $_SESSION['status'] = "No account found or your account has been remove!";
     $_SESSION['status_code'] = "error";
     $_SESSION['status_timer'] = 10000000;
    header("Location: ../../..");
@@ -138,9 +138,7 @@ class USER
  
  public function logout()
  {
-
-  session_destroy();
-  $_SESSION['userSession'] = false;
+  unset($_SESSION['userSession']);
  }
  
  function send_mail($email,$message,$subject,$smtp_email,$smtp_password,$system_name)

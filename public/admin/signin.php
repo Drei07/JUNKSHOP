@@ -11,74 +11,63 @@ include_once '../../dashboard/superadmin/controller/select-settings-configuratio
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="../../src/img/<?php echo $logo ?>">
-	<link rel="stylesheet" type="text/css" href="../../src/vendor/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../../src/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="../../src/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-	<link rel="stylesheet" type="text/css" href="../../src/vendor/animate/animate.css">	
-	<link rel="stylesheet" type="text/css" href="../../src/vendor/css-hamburgers/hamburgers.min.css">
-	<link rel="stylesheet" type="text/css" href="../../src/vendor/animsition/css/animsition.min.css">
-	<link rel="stylesheet" type="text/css" href="../../src/vendor/select2/select2.min.css">	
-	<link rel="stylesheet" type="text/css" href="../../src/vendor/daterangepicker/daterangepicker.css">
-	<link rel="stylesheet" type="text/css" href="../../src/css/util.css?v=<?php echo time(); ?>">
-	<link rel="stylesheet" type="text/css" href="../../src/css/main.css?v=<?php echo time(); ?>">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../../src/css/login.css?v=<?php echo time(); ?>">
 
 	<script src="https://www.google.com/recaptcha/api.js?render=<?php echo $SiteKEY ?>"></script>
 
     <title>Admin | Sign In</title>
 </head>
 <body>
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-form-title" style="background-image: url(../../src/img/fish.jpg);">
-					<span class="login100-form-title-1">
-						Sign In
-					</span>
-				</div>
+<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(../../src/img/login-img.jpg);">
+						</div>
+						<div class="login-wrap p-4 p-md-5">
+							<div class="d-flex">
+								<div class="w-100">
+									<h3 class="mb-4">Sign In</h3>
+								</div>
+							</div>
+							<form action="../../dashboard/admin/authentication/admin-signin" method="POST"  class="signin-form">
 
-				<form action="../../dashboard/admin/authentication/admin-signin" method="POST" novalidate="" class="login100-form validate-form">
+								<input type="hidden" id="g-token" name="g-token">
 
-					<input type="hidden" id="g-token" name="g-token">
-
-					<div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
-						<span class="label-input100">Email</span>
-						<input class="input100" type="email" name="email" placeholder="Enter email">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
-						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="password" placeholder="Enter password">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="flex-sb-m w-full p-b-30">
-
-						<div>
-							<a href="forgot-password" class="txt1">
-								Forgot Password?
-							</a>
+								<div class="form-group mb-3">
+									<label class="label" for="name">Email</label>
+									<input type="email" name="email" class="form-control" placeholder="Enter email" required>
+								</div>
+								<div class="form-group mb-3">
+									<label class="label" for="password">Password</label>
+									<input type="password" name="password" class="form-control" placeholder="Password" required>
+								</div>
+								<div class="form-group">
+									<button type="submit" name="btn-signin" class="form-control btn btn-primary rounded submit px-3">Sign
+										In</button>
+								</div>
+								<div class="form-group d-md-flex">
+									<div class="w-50 text-left">
+									</div>
+									<div class="w-50 text-md-right">
+										<a href="forgot-password">Forgot Password</a>
+									</div>
+								</div>
+							</form>
+							<p class="text-center">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>
 						</div>
 					</div>
-
-					<div class="container-login100-form-btn">
-						<button type="submit" name="btn-signin" id="submit" class="login100-form-btn">
-							Signin
-						</button>
-					</div>
-				</form>
+				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 
 	<script src="../../src/vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="../../src/vendor/animsition/js/animsition.min.js"></script>
 	<script src="../../src/vendor/bootstrap/js/popper.js"></script>
 	<script src="../../src/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="../../src/vendor/select2/select2.min.js"></script>
-	<script src="../../src/vendor/daterangepicker/moment.min.js"></script>
-	<script src="../../src/vendor/daterangepicker/daterangepicker.js"></script>
-	<script src="../../src/vendor/countdowntime/countdowntime.js"></script>
 	<script src="../../src/js/main.js"></script>
 	<script src="../../src/node_modules/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="../../src/node_modules/jquery/dist/jquery.min.js"></script>

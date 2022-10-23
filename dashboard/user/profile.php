@@ -17,13 +17,12 @@ $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
 $UId 						= $row['userId'];
 $profile_user 				= $row['userProfile'];
-$user_ID 					= $row['employeeId'];
+$user_ID 					= $row['uniqueID'];
 $user_Fname 				= $row['userFirst_Name'];
 $user_Mname 				= $row['userMiddle_Name'];
 $user_Lname 				= $row['userLast_Name'];
 $user_phoneNumber 			= $row['userPhone_Number'];
 $user_email 				= $row['userEmail'];
-$user_position 				= $row['userPosition'];
 $user_last_profile_update 	= $row['updated_at'];
 
 ?>
@@ -44,26 +43,20 @@ $user_last_profile_update 	= $row['updated_at'];
 
 	<!-- SIDEBAR -->
 	<section id="sidebar" class="hide">
-		<a href="#" class="brand"><img src="../../src/img/<?php echo $logo ?>" alt="logo" class="brand-img"></i>&nbsp;&nbsp;SVNHS</a>
+		<a href="#" class="brand"><img src="../../src/img/<?php echo $logo ?>" alt="logo" class="brand-img"></i>&nbsp;&nbsp;FSR</a>
 		<ul class="side-menu">
 			<li><a href="home"><i class='bx bxs-dashboard icon' ></i> Dashboard</a></li>
-			<li class="divider" data-text="Class">Class</li>
+			<li class="divider" data-text="main">Main</li>
 			<li>
-				<a href="#"><i class='bx bxs-chalkboard icon' ></i> Advisory <i class='bx bx-chevron-right icon-right' ></i></a>
-				<ul class="side-dropdown">
-					<li><a href="G11-advisory-class">G11-Advisory</a></li>
-					<li><a href="G12-advisory-class">G12-Advisory</a></li>
-				</ul>
+				<a href="shop"><i class='bx bxs-cart-add icon' ></i></i></i> Shop </a>
 			</li>
-			<li>
-				<a href="#"><i class='bx bxs-chalkboard icon' ></i> Subject <i class='bx bx-chevron-right icon-right' ></i></a>
+            <li>
+				<a href="#"><i class='bx bxs-notepad icon' ></i> My Purchase  <i class='bx bx-chevron-right icon-right' ></i></a>
 				<ul class="side-dropdown">
-					<li><a href="G11-subject-class">G11-Class</a></li>
-					<li><a href="G12-subject-class">G12-Class</a></li></li>
+					<li><a href="purchase-data">Data</a></li>
 				</ul>
 			</li>
 		</ul>
-
 	</section>
 	<!-- SIDEBAR -->
 
@@ -158,24 +151,16 @@ $user_last_profile_update 	= $row['updated_at'];
 								<input type="text" class="form-control numbers" value="<?php echo $user_phoneNumber ?>"  autocapitalize="off" inputmode="numeric" autocomplete="off" name="PNumber" id="phone_number" minlength="10" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" required placeholder="10-digit number">
 								</div>
 							</div>
-
-							<div class="col-md-6">
-								<label for="position" class="form-label">Position<span> *</span></label>
-								<input disabled type="text" class="form-control" value="<?php echo $user_position ?>" autocapitalize="on" maxlength="20" autocomplete="off" name="Position" id="position" onkeypress="return (event.charCode > 64 && event.charCode < 91) || (event.charCode > 96 && event.charCode < 123) || (event.charCode==32)" >
-								<div class="invalid-feedback">
-								Please provide a Position
-								</div>
-							</div>
 							
 							<div class="col-md-6">
-								<label for="employee_id" class="form-label">Employee ID<span> *</span></label>
+								<label for="employee_id" class="form-label">Customer ID<span> *</span></label>
 								<input disabled type="text" class="form-control" value="<?php echo $user_ID ?>" autocapitalize="on" maxlength="15" autocomplete="off" name="EmployeeId" id="employee_id"  >
 								<div class="invalid-feedback">
 								Please provide a Employee ID.
 								</div>
 							</div>
 
-							<div class="col-md-12">
+							<div class="col-md-6">
 								<label for="email" class="form-label">Email<span> *</span></label>
 								<input disabled type="email" class="form-control" value="<?php echo $user_email ?>" autocapitalize="off" autocomplete="off" name="Email" id="email" required placeholder="Ex. juan@email.com">
 								<div class="invalid-feedback">

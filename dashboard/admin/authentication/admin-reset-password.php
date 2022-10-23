@@ -48,40 +48,54 @@ if(isset($_GET['id']) && isset($_GET['code']))
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../../src/css/login.css?v=<?php echo time(); ?>">
-    <title>Reset Password</title>
+	<link rel="shortcut icon" href="../../../src/img/<?php echo $logo ?>">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../../../src/css/login.css?v=<?php echo time(); ?>">
+
+    <title>Superadmin | Reset Password</title>
 </head>
-<body class="my-login-page">
-	<section class="h-100">
-		<div class="container h-100">
-			<div class="row justify-content-md-center align-items-center h-100">
-				<div class="card-wrapper">
-					<div class="card fat">
-						<div class="card-body">
-							<h4 class="card-title">Reset Password</h4>
-                            <a href="../../../public/admin/signin" class="close"><img src="../../../src/img/caret-right-fill.svg" alt="close-btn" width="24" height="24"></a>
-                            <form action="" method="POST" class="my-login-validation" novalidate="">
-								<div class="form-group">
-									<label for="new-password">New Password</label>
-									<input id="new-password" type="password" class="form-control" name="new-password" autocapitalize="on" autocorrect="off" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" placeholder="Enter your password" required autofocus data-eye>
-									<div class="invalid-feedback">
-										Password is required
-									</div>
-									<div class="form-text text-muted">
-										Make sure your password is contain capital letter and number with a minumum of 8 words.
-									</div>
+<body>
+<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(../../../src/img/login-img.jpg);">
+						</div>
+						<div class="login-wrap p-4 p-md-5">
+							<div class="d-flex">
+								<div class="w-100">
+									<h3 class="mb-4">Reset Password</h3>
+								</div>
+							</div>
+							<form action="" method="POST"  class="signin-form">
+
+								<div class="form-group mb-3" >
+									<label class="label" for="password">Password</label>
+									<input type="password" name="new-password" id="new-password" class="form-control" placeholder="Password" required>
 								</div>
 
-								<div class="form-group m-0">
-									<button type="submit" name="btn-update-password" class="btn btn-primary btn-block">
-										Reset Password
-									</button>
+								<div class="form-group mb-3" style="opacity: 0;">
+									<label class="label" for="name">Email</label>
+									<input type="email" name="" class="form-control" placeholder="Enter email" >
+								</div>
+								<div class="form-group">
+									<button type="submit" name="btn-update-password" class="form-control btn btn-primary rounded submit px-3">Reset Password</button>
+								</div>
+
+								<div class="form-group d-md-flex">
+									<div class="w-50 text-left">
+									</div>
+									<div class="w-50 text-md-right">
+										<a href="../../../">Back to Sign in</a>
+									</div>
 								</div>
 							</form>
+							<p class="text-center" style="opacity: 0;">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>
 						</div>
 					</div>
 				</div>
@@ -89,18 +103,22 @@ if(isset($_GET['id']) && isset($_GET['code']))
 		</div>
 	</section>
 
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="../../../src/js/SigninForm.js"></script>
+	<script src="../../../src/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../../../src/vendor/bootstrap/js/popper.js"></script>
+	<script src="../../../src/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../../src/js/main.js"></script>
+	<script src="../../../src/node_modules/sweetalert/dist/sweetalert.min.js"></script>
+	<script src="../../../src/node_modules/jquery/dist/jquery.min.js"></script>
+	
+
 
 	<script>
 
+
 	</script>
 
-	<!-- SWEET ALERT -->
-	<?php
+<!-- SWEET ALERT -->
+<?php
 
 	if(isset($_SESSION['status']) && $_SESSION['status'] !='')
 	{
@@ -117,6 +135,6 @@ if(isset($_GET['id']) && isset($_GET['code']))
 		<?php
 		unset($_SESSION['status']);
 	}
-	?>
+?>
 </body>
 </html>

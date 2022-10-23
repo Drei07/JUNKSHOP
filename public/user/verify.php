@@ -6,23 +6,56 @@ include_once '../../dashboard/superadmin/controller/select-settings-configuratio
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="author" content="Kodinger">
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Verify Account</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="../../src/img/<?php echo $logo ?>">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../src/css/login.css?v=<?php echo time(); ?>">
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../../src/css/login.css?v=<?php echo time(); ?>">
+
+    <title>Verify Account?</title>
 </head>
-<body class="my-login-page">
-	<section class="h-100">
-		<div class="container h-100">
-			<div class="row justify-content-md-center align-items-center h-100">
-				<div class="card-wrapper">
-					<div class="card fat">
-						<div class="card-body">
-							<h4 class="card-title">Verify Account</h4>
-                            <?php if(isset($msg)) { echo $msg; } ?>
+<body>
+<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center">
+				<div class="col-md-12 col-lg-10">
+					<div class="wrap d-md-flex">
+						<div class="img" style="background-image: url(../../src/img/login-img.jpg);">
+						</div>
+						<div class="login-wrap p-4 p-md-5">
+							<div class="d-flex">
+								<div class="w-100">
+									<h3 class="mb-4">Verify Account?</h3>
+								</div>
+							</div>
+							<form action=""   class="signin-form">
+
+								<div>
+									<?php if(isset($msg)) { echo $msg; } ?>
+								</div>
+
+								<div class="form-group mb-3"style="opacity: 0;">
+									<label class="label" for="name">Email</label>
+									<input type="email" name="email" class="form-control" placeholder="Enter email" required>
+								</div>
+								<div class="form-group mb-3" style="opacity: 0;">
+									<label class="label" for="password">Password</label>
+									<input type="password" name="password" class="form-control" placeholder="Password">
+								</div>
+								<div class="form-group" style="opacity: 0;">
+									<button type="submit" name="btn-forgot-password" class="form-control btn btn-primary rounded submit px-3">Send</button>
+								</div>
+								<div class="form-group d-md-flex" style="opacity: 0;">
+									<div class="w-50 text-left">
+									</div>
+									<div class="w-50 text-md-right">
+										<a href="../../">Back to Sign in</a>
+									</div>
+								</div>
+							</form>
+							<p style="opacity: 0;" class="text-center">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>
 						</div>
 					</div>
 				</div>
@@ -30,18 +63,22 @@ include_once '../../dashboard/superadmin/controller/select-settings-configuratio
 		</div>
 	</section>
 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+	<script src="../../src/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="../../src/vendor/bootstrap/js/popper.js"></script>
+	<script src="../../src/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="../../src/js/main.js"></script>
 	<script src="../../src/node_modules/sweetalert/dist/sweetalert.min.js"></script>
 	<script src="../../src/node_modules/jquery/dist/jquery.min.js"></script>
-	<script src="../../src/js/SigninForm.js"></script>
+	
+
 
 	<script>
 
+
 	</script>
 
-	<!-- SWEET ALERT -->
-	<?php
+<!-- SWEET ALERT -->
+<?php
 
 	if(isset($_SESSION['status']) && $_SESSION['status'] !='')
 	{
@@ -58,6 +95,6 @@ include_once '../../dashboard/superadmin/controller/select-settings-configuratio
 		<?php
 		unset($_SESSION['status']);
 	}
-	?>
+?>
 </body>
 </html>
