@@ -49,7 +49,7 @@ if(isset($_POST['btn-register'])) {
         $message = "     
             Hello sir/maam $last_name,
             <br /><br />
-            Welcome to Fishery Supplier Recommender!
+            Welcome to Chop Shop`!
             <br /><br />
             Email:<br />$email
             Password:<br />$upass
