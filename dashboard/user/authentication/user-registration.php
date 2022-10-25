@@ -1,10 +1,10 @@
 <?php
 require_once 'user-class.php';
 //URL
-// $main_url = "https://fishery-supplier-recommender.shop";
+$main_url = "https://chopshop.tech";
 
 //LOCALHOST
-$main_url = "http://localhost/JUNKSHOP";
+// $main_url = "http://localhost/JUNKSHOP";
 
 $reg_user = new USER();
 
