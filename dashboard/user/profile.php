@@ -35,7 +35,7 @@ $user_profile = $row['userProfile'];
 <html lang="en">
 
 <head>
-	<title>Admin | Profile</title>
+	<title>Profile</title>
 
 	<!-- Meta -->
 	<meta charset="utf-8">
@@ -213,7 +213,7 @@ $user_profile = $row['userProfile'];
 									<li>
 										<hr class="dropdown-divider">
 									</li>
-									<li><a class="dropdown-item btn-signout" href="authentication/admin-signout">Sign Out</a></li>
+									<li><a class="dropdown-item btn-signout" href="authentication/user-signout">Sign Out</a></li>
 								</ul>
 							</div>
 							<!--//app-user-dropdown-->
