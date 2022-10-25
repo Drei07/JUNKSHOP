@@ -14,7 +14,7 @@ include_once '../../dashboard/superadmin/controller/select-settings-configuratio
 	<link rel="stylesheet" href="../../src/node_modules/boxicons/css/boxicons.min.css">
 	<link rel="stylesheet" href="../../src/node_modules/aos/dist/aos.css" />
     <link rel="stylesheet" href="../../src/css/countrySelect.css?v=<?php echo time(); ?>" />
-    <link rel="stylesheet" href="../../src/css/admin.css?v=<?php echo time(); ?>">
+	<link rel="stylesheet" type="text/css" href="../../src/css/portal.css?v=<?php echo time(); ?>">
 	<title>Registration</title>
 </head>
 <body>

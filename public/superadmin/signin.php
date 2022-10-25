@@ -57,7 +57,7 @@ include_once '../../dashboard/superadmin/controller/select-settings-configuratio
 									</div>
 								</div>
 							</form>
-							<p class="text-center">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>
+							<p style="opacity: 0;" class="text-center">Not a member? <a data-toggle="tab" href="#signup">Sign Up</a></p>
 						</div>
 					</div>
 				</div>
