@@ -25,7 +25,7 @@ include_once 'dashboard/superadmin/controller/select-settings-configuration-cont
 			<div class="row justify-content-center">
 				<div class="col-md-12 col-lg-10">
 					<div class="wrap d-md-flex">
-						<div class="img" style="background-image: url(src/img/login-img.jpg);">
+						<div class="img" style="background-image: url(src/img/login-img.png);">
 						</div>
 						<div class="login-wrap p-4 p-md-5">
 							<div class="d-flex">
