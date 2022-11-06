@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2022 at 06:20 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Generation Time: Nov 06, 2022 at 01:46 PM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -126,7 +126,8 @@ CREATE TABLE `client_list` (
 --
 
 INSERT INTO `client_list` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `contact`, `address`, `email`, `password`, `status`, `delete_flag`, `date_created`, `date_added`) VALUES
-(1, 'John', 'D', 'Smith', 'Male', '09123456897', 'This is my sample address only', 'jsmith@sample.com', '1254737c076cf867dc53d60a0364f38e', 1, 0, '2022-01-24 13:33:44', '2022-01-25 13:15:11');
+(1, 'John', 'D', 'Smith', 'Male', '09123456897', 'This is my sample address only', 'jsmith@sample.com', '1254737c076cf867dc53d60a0364f38e', 1, 0, '2022-01-24 13:33:44', '2022-01-25 13:15:11'),
+(2, 'juan', '', 'santos', 'Male', '09776621929', 'lubao, pampanga', 'chopshop750@gmail.com', '42f749ade7f9e195bf475f37a44cafcb', 1, 0, '2022-11-06 11:29:45', '2022-11-06 12:42:58');
 
 -- --------------------------------------------------------
 
@@ -173,7 +174,8 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `date_add
 (8, 6, 1, 1, '2022-01-24 16:37:18'),
 (9, 6, 4, 2, '2022-01-24 16:37:18'),
 (10, 7, 4, 2, '2022-01-25 10:43:19'),
-(11, 7, 3, 4, '2022-01-25 10:43:19');
+(11, 7, 3, 4, '2022-01-25 10:43:19'),
+(13, 9, 3, 1, '2022-11-06 11:34:37');
 
 -- --------------------------------------------------------
 
@@ -198,7 +200,8 @@ CREATE TABLE `order_list` (
 
 INSERT INTO `order_list` (`id`, `ref_code`, `client_id`, `total_amount`, `delivery_address`, `status`, `date_created`, `date_updated`) VALUES
 (6, '202201-00001', 1, 11500, 'This is my sample address only', 5, '2022-01-24 16:37:18', '2022-01-24 17:09:42'),
-(7, '202201-00002', 1, 11080, 'This is my sample address only', 2, '2022-01-25 10:43:19', '2022-01-25 10:58:04');
+(7, '202201-00002', 1, 11080, 'This is my sample address only', 2, '2022-01-25 10:43:19', '2022-01-25 10:58:04'),
+(9, '202211-00001', 2, 520, 'lubao, pampanga', 5, '2022-11-06 11:34:37', '2022-11-06 11:34:44');
 
 -- --------------------------------------------------------
 
@@ -226,7 +229,7 @@ CREATE TABLE `product_list` (
 --
 
 INSERT INTO `product_list` (`id`, `brand_id`, `category_id`, `name`, `models`, `description`, `price`, `status`, `image_path`, `delete_flag`, `date_created`, `date_updated`) VALUES
-(1, 1, 3, 'Crash Guard', 'Nmax V2', '&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis, ex in commodo rhoncus, magna felis malesuada mi, et pharetra justo enim eu sapien. Nam fermentum viverra risus, in eleifend libero ultricies sit amet. Etiam gravida lacinia tellus eget vehicula. Nunc vel risus quis leo ornare cursus. Curabitur consectetur placerat ex, nec vestibulum arcu fermentum sed. Proin ipsum ipsum, consectetur sed aliquam a, tincidunt a sapien. Proin viverra ultricies tellus id volutpat. Integer cursus ligula id massa cursus, ut commodo ipsum venenatis. Maecenas et dui sit amet lorem fermentum imperdiet. Nulla a porta urna. Vivamus ut magna nisl.&lt;/p&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;&quot;&gt;Donec condimentum lacus nec nulla condimentum fermentum. Quisque tincidunt turpis tellus. Pellentesque pretium egestas ipsum molestie dictum. Quisque eu magna id erat fermentum pharetra vel vitae risus. Suspendisse potenti. Nullam mauris dolor, sollicitudin ut leo rutrum, dictum rutrum magna. Curabitur ut laoreet mi, scelerisque pulvinar leo. Phasellus id neque aliquam, posuere nisl sed, malesuada nibh. In euismod risus eu elit pharetra, id consequat lorem iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus nec eros est. Nunc nec erat at lectus blandit condimentum. Sed sit amet mi nisi. Donec ullamcorper, metus vulputate viverra porta, nisl lectus porta elit, eget dictum quam ipsum cursus massa. Vestibulum eget purus nec augue bibendum facilisis ac sed lacus.&lt;/p&gt;', 2500, 1, 'uploads/products/1.png?v=1642735227', 0, '2022-01-21 11:20:27', '2022-01-21 11:21:50'),
+(1, 1, 3, 'Crash Guard', 'Nmax V2', '&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis, ex in commodo rhoncus, magna felis malesuada mi, et pharetra justo enim eu sapien. Nam fermentum viverra risus, in eleifend libero ultricies sit amet. Etiam gravida lacinia tellus eget vehicula. Nunc vel risus quis leo ornare cursus. Curabitur consectetur placerat ex, nec vestibulum arcu fermentum sed. Proin ipsum ipsum, consectetur sed aliquam a, tincidunt a sapien. Proin viverra ultricies tellus id volutpat. Integer cursus ligula id massa cursus, ut commodo ipsum venenatis. Maecenas et dui sit amet lorem fermentum imperdiet. Nulla a porta urna. Vivamus ut magna nisl.&lt;/p&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;&quot;&gt;Donec condimentum lacus nec nulla condimentum fermentum. Quisque tincidunt turpis tellus. Pellentesque pretium egestas ipsum molestie dictum. Quisque eu magna id erat fermentum pharetra vel vitae risus. Suspendisse potenti. Nullam mauris dolor, sollicitudin ut leo rutrum, dictum rutrum magna. Curabitur ut laoreet mi, scelerisque pulvinar leo. Phasellus id neque aliquam, posuere nisl sed, malesuada nibh. In euismod risus eu elit pharetra, id consequat lorem iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus nec eros est. Nunc nec erat at lectus blandit condimentum. Sed sit amet mi nisi. Donec ullamcorper, metus vulputate viverra porta, nisl lectus porta elit, eget dictum quam ipsum cursus massa. Vestibulum eget purus nec augue bibendum facilisis ac sed lacus.&lt;/p&gt;', 3500, 1, 'uploads/products/1.png?v=1667724578', 0, '2022-01-21 11:20:27', '2022-11-06 16:49:38'),
 (2, 5, 3, 'Steering Dumper', 'Sample', '&lt;p&gt;sample&lt;/p&gt;', 15000, 1, 'uploads/products/2.png?v=1642736907', 1, '2022-01-21 11:48:27', '2022-01-21 11:53:41'),
 (3, 3, 7, 'Oil 4T 10W-40 (1L)', 'Sample', '&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px;&quot;&gt;Maecenas eget condimentum metus, et faucibus turpis. Sed elementum commodo hendrerit. Nulla maximus tincidunt mi, ut convallis mauris congue sit amet. Morbi nec tincidunt sapien. Nulla metus urna, facilisis eget bibendum quis, auctor a tortor. Vestibulum eros urna, euismod ut aliquam ac, cursus sed quam. Donec accumsan tortor at velit malesuada molestie. Aenean porttitor quam nibh, pulvinar pellentesque justo tristique in. Proin nec lacinia metus. Aliquam erat volutpat. Proin egestas, ante vitae rutrum malesuada, erat nisi ultricies leo, eu viverra sem nisl in metus. Phasellus vitae risus malesuada, cursus metus ac, eleifend metus. Morbi ornare sodales fringilla. Nulla venenatis dictum felis varius commodo. Proin eu leo in eros consectetur viverra dignissim ac justo. Curabitur euismod velit sit amet ex condimentum, ut iaculis nisi consectetur.&lt;/p&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px;&quot;&gt;Ut id volutpat nulla. Aliquam eu orci at ipsum mattis mollis vel eu est. Mauris sit amet finibus tortor. Phasellus sodales massa sed erat varius, non hendrerit eros hendrerit. Pellentesque eu turpis odio. Aenean viverra justo eget eros sollicitudin porttitor. Duis convallis suscipit odio sit amet facilisis. Suspendisse nec tempus leo. Aliquam tincidunt arcu quis justo posuere ullamcorper. Integer sagittis nisi id suscipit semper. Vestibulum tempor pretium ligula, in bibendum orci tincidunt eget. Mauris aliquet porttitor consectetur. In ut neque magna. Phasellus purus elit, pretium et imperdiet eu, ultrices sit amet libero. Praesent ac ligula rhoncus massa aliquet maximus sit amet rhoncus quam. Phasellus eget tempor nisi, quis dapibus dui.&lt;/p&gt;', 520, 1, 'uploads/products/3.png?v=1642828345', 0, '2022-01-21 13:57:15', '2022-01-22 14:20:40'),
 (4, 7, 5, 'Tire 101 110/70/17', 'Any', '&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px;&quot;&gt;Vivamus euismod porttitor nisl eu tincidunt. Nulla ac enim ut risus pretium rutrum vel at augue. Nullam eu arcu luctus, elementum sapien sed, blandit mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales imperdiet mauris, tincidunt molestie elit tristique sit amet. Mauris sit amet erat quis leo laoreet facilisis. Donec a egestas nibh, eget auctor ligula. Pellentesque ut nisi varius mauris dictum dictum sed nec nulla. Curabitur condimentum eros sagittis eros eleifend accumsan. Sed eu sapien sit amet nisl viverra tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus.&lt;/p&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px;&quot;&gt;In pretium, tortor et fermentum eleifend, ante tortor rhoncus magna, ac eleifend odio libero id nibh. Etiam rutrum purus vel mattis mattis. Praesent sit amet ligula pulvinar, dapibus lorem eu, luctus augue. Cras sed libero finibus, posuere libero a, dapibus purus. Quisque dolor risus, sollicitudin nec finibus ut, ullamcorper tempor enim. Nulla auctor semper ullamcorper. Sed fringilla lectus finibus mauris ultrices cursus. Vivamus laoreet eros a purus blandit fermentum. Suspendisse ornare ipsum dictum lacus ornare, sed viverra enim pretium. Vivamus pulvinar commodo porttitor.&lt;/p&gt;', 4500, 1, 'uploads/products/4.jpg?v=1642745034', 0, '2022-01-21 14:03:54', '2022-01-21 14:03:54'),
@@ -249,18 +252,18 @@ CREATE TABLE `request_meta` (
 --
 
 INSERT INTO `request_meta` (`request_id`, `meta_field`, `meta_value`) VALUES
-(5, 'vehicle_type', 'Sample 102'),
-(5, 'vehicle_name', 'Sample'),
-(5, 'vehicle_registration_number', 'TEST123'),
-(5, 'vehicle_model', 'test'),
-(5, 'service_id', '3'),
-(5, 'pickup_address', 'Sample Address'),
 (4, 'vehicle_type', 'Sample'),
 (4, 'vehicle_name', 'Yamaha Nmax V2'),
 (4, 'vehicle_registration_number', 'GCN 2306'),
 (4, 'vehicle_model', '2021'),
 (4, 'service_id', '1,2,4'),
-(4, 'pickup_address', '');
+(4, 'pickup_address', ''),
+(5, 'vehicle_type', 'Sample 102'),
+(5, 'vehicle_name', 'Sample'),
+(5, 'vehicle_registration_number', 'TEST123'),
+(5, 'vehicle_model', 'test'),
+(5, 'service_id', '3'),
+(5, 'pickup_address', 'Sample Address');
 
 -- --------------------------------------------------------
 
@@ -308,7 +311,7 @@ CREATE TABLE `service_requests` (
 
 INSERT INTO `service_requests` (`id`, `client_id`, `service_type`, `mechanic_id`, `status`, `date_created`) VALUES
 (4, 1, 'Drop Off', 2, 3, '2022-01-25 09:47:31'),
-(5, 1, 'Pick Up', NULL, 4, '2022-01-25 10:25:23');
+(5, 1, 'Pick Up', 1, 2, '2022-01-25 10:25:23');
 
 -- --------------------------------------------------------
 
@@ -352,11 +355,11 @@ CREATE TABLE `system_info` (
 --
 
 INSERT INTO `system_info` (`id`, `meta_field`, `meta_value`) VALUES
-(1, 'name', 'Motorcycle Parts & Services Shop Management System'),
-(6, 'short_name', 'MPSSMS- PHP'),
-(11, 'logo', 'uploads/1642728480_logo.jpg'),
+(1, 'name', 'Chop Shop Motorcycle Parts & Services Shop Management System'),
+(6, 'short_name', 'CHOP SHOP'),
+(11, 'logo', 'uploads/1667717760_png-clipart-engine-piston-motorcycle-helmets-motorcycle-club-custom-motorcycle-kawasaki-heavy-industries-motorcycle-emblem-photography.png'),
 (13, 'user_avatar', 'uploads/user_avatar.jpg'),
-(14, 'cover', 'uploads/1643082720_bike-cover-2.jpg');
+(14, 'cover', 'uploads/1667717160_yamaha-nmax-155-2020-slant-rear-view-full-image-724584.webp');
 
 -- --------------------------------------------------------
 
@@ -382,8 +385,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `username`, `password`, `avatar`, `last_login`, `type`, `date_added`, `date_updated`) VALUES
-(1, 'Adminstrator', 'Admin', 'admin', '0192023a7bbd73250516f069df18b500', 'uploads/1624240500_avatar.png', NULL, 1, '2021-01-20 14:02:37', '2021-06-21 09:55:07'),
-(6, 'Claire', 'Blake', 'cblake', 'cd74fae0a3adf459f73bbf187607ccea', 'uploads/1632990840_ava.jpg', NULL, 2, '2021-09-30 16:34:02', '2021-09-30 16:35:26');
+(1, 'Adminstrator', 'Admin', 'admin', '42f749ade7f9e195bf475f37a44cafcb', 'uploads/1624240500_avatar.png', NULL, 1, '2021-01-20 14:02:37', '2022-11-06 19:08:44'),
+(6, 'Claire', 'Blake', 'cblake', 'cd74fae0a3adf459f73bbf187607ccea', 'uploads/1632990840_ava.jpg', NULL, 2, '2021-09-30 16:34:02', '2021-09-30 16:35:26'),
+(7, 'SAmple', 'SAmple', 'SAmple', '0192023a7bbd73250516f069df18b500', 'uploads/1624240500_avatar.png', NULL, 1, '2021-01-20 14:02:37', '2022-11-06 17:40:14');
 
 --
 -- Indexes for dumped tables
@@ -498,7 +502,7 @@ ALTER TABLE `brand_list`
 -- AUTO_INCREMENT for table `cart_list`
 --
 ALTER TABLE `cart_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -510,7 +514,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `client_list`
 --
 ALTER TABLE `client_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mechanics_list`
@@ -522,13 +526,13 @@ ALTER TABLE `mechanics_list`
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `order_list`
 --
 ALTER TABLE `order_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `product_list`
@@ -564,7 +568,7 @@ ALTER TABLE `system_info`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
