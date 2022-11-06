@@ -1,108 +1,80 @@
-<?php
-include_once __DIR__. '/src/API/api.php';
-include_once 'dashboard/user/authentication/user-signin.php';
-include_once 'dashboard/superadmin/controller/select-settings-configuration-controller.php';
-
-?>
+<?php require_once('config.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="src/img/<?php echo $logo ?>">
-	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="src/css/login.css?v=<?php echo time(); ?>">
-
-	<script src="https://www.google.com/recaptcha/api.js?render=<?php echo $SiteKEY ?>"></script>
-
-    <title>Sign In</title>
-</head>
+<?php require_once('inc/header.php') ?>
 <body>
-<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center">
-				<div class="col-md-12 col-lg-10">
-					<div class="wrap d-md-flex">
-						<div class="img" style="background-image: url(src/img/login-img.png);">
-						</div>
-						<div class="login-wrap p-4 p-md-5">
-							<div class="d-flex">
-								<div class="w-100">
-									<h3 class="mb-4">Sign In</h3>
-								</div>
-							</div>
-							<form action="dashboard/user/authentication/user-signin" method="POST"  class="signin-form">
-
-								<input type="hidden" id="g-token" name="g-token">
-
-								<div class="form-group mb-3">
-									<label class="label" for="name">Email</label>
-									<input type="email" name="email" class="form-control" placeholder="Enter email" required>
-								</div>
-								<div class="form-group mb-3">
-									<label class="label" for="password">Password</label>
-									<input type="password" name="password" class="form-control" placeholder="Password" required>
-								</div>
-								<div class="form-group">
-									<button type="submit" name="btn-signin" class="form-control btn btn-primary rounded submit px-3">Sign
-										In</button>
-								</div>
-								<div class="form-group d-md-flex">
-									<div class="w-50 text-left">
-									</div>
-									<div class="w-50 text-md-right">
-										<a href="public/user/forgot-password">Forgot Password</a>
-									</div>
-								</div>
-							</form>
-							<p class="text-center">Not a member? <a data-toggle="" href="public/user/create-account">Sign Up</a></p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-
-	<script src="src/vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="src/vendor/bootstrap/js/popper.js"></script>
-	<script src="src/vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="src/js/main.js"></script>
-	<script src="src/node_modules/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="src/node_modules/jquery/dist/jquery.min.js"></script>
-	
-
-
-	<script>
-
-		// CAPTCHA
-		grecaptcha.ready(function() {
-		grecaptcha.execute('<?php echo $SiteKEY ?>', {action: 'submit'}).then(function(token) {
-			document.getElementById("g-token").value = token;
-		});
-		});
-
-	</script>
-
-<!-- SWEET ALERT -->
-<?php
-
-	if(isset($_SESSION['status']) && $_SESSION['status'] !='')
-	{
-		?>
-		<script>
-			swal({
-			title: "<?php echo $_SESSION['status_title']; ?>",
-			text: "<?php echo $_SESSION['status']; ?>",
-			icon: "<?php echo $_SESSION['status_code']; ?>",
-			button: false,
-			timer: <?php echo $_SESSION['status_timer']; ?>,
-			});
-		</script>
-		<?php
-		unset($_SESSION['status']);
-	}
+<?php $page = isset($_GET['p']) ? $_GET['p'] : 'home';  ?>
+<?php require_once('inc/topBarNav.php') ?>
+     <?php if($_settings->chk_flashdata('success')): ?>
+      <script>
+        alert_toast("<?php echo $_settings->flashdata('success') ?>",'success')
+      </script>
+<?php endif;?>
+<?php 
+    if(!file_exists($page.".php") && !is_dir($page)){
+        include '404.html';
+    }else{
+      if(is_dir($page))
+        include $page.'/index.php';
+      else
+        include $page.'.php';
+    }
 ?>
+<?php require_once('inc/footer.php') ?>
+
+  <div class="modal fade" id="uni_modal" role='dialog'>
+    <div class="modal-dialog   rounded-0 modal-md modal-dialog-centered" role="document">
+      <div class="modal-content  rounded-0">
+        <div class="modal-header">
+        <h5 class="modal-title"></h5>
+      </div>
+      <div class="modal-body">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id='submit' onclick="$('#uni_modal form').submit()">Save</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="uni_modal_right" role='dialog'>
+    <div class="modal-dialog  rounded-0 modal-full-height  modal-md" role="document">
+      <div class="modal-content rounded-0">
+        <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span class="fa fa-arrow-right"></span>
+        </button>
+      </div>
+      <div class="modal-body">
+      </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="viewer_modal" role='dialog'>
+    <div class="modal-dialog modal-md" role="document">
+      <div class="modal-content">
+              <button type="button" class="btn-close" data-dismiss="modal"><span class="fa fa-times"></span></button>
+              <img src="" alt="">
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="confirm_modal" role='dialog'>
+    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title">Confirmation</h5>
+      </div>
+      <div class="modal-body">
+        <div id="delete_content"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id='confirm' onclick="">Continue</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>
