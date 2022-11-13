@@ -8,7 +8,7 @@ $dev_data = array('id'=>'-1','firstname'=>'Developer','lastname'=>'','username'=
 // if(!defined('DB_PASSWORD')) define('DB_PASSWORD',"");
 // if(!defined('DB_NAME')) define('DB_NAME',"bpsms_db");
 
-    if(!defined('base_url')) define('base_url','https://chopshop.tech');
+    if(!defined('base_url')) define('base_url','https://chopshop.tech/');
     if(!defined('base_app')) define('base_app', str_replace('\\','/',__DIR__).'/' );
     if(!defined('dev_data')) define('dev_data',$dev_data);
     if(!defined('DB_SERVER')) define('DB_SERVER',"localhost");
