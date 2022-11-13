@@ -5,7 +5,7 @@
             <h1 class="display-4 fw-bolder"><?php echo $_settings->info('name') ?></h1>
             <p class="lead fw-normal text-white-50 mb-0">We will take care of your vehicle</p>
             <div class="col-auto mt-2">
-                <button class="btn btn-primary btn-lg rounded-0" id="send_request" type="button">Send Service Request</button>
+                <button class="btn  btn-lg rounded-0" id="send_request" type="button">Send Service Request</button>
             </div>
         </div>
     </div>

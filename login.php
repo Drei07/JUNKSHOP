@@ -11781,7 +11781,7 @@
     .img {
       background-size: cover;
       background-repeat: no-repeat;
-      background-position: center center;
+      background-position: center;
     }
 
     .wrap {

@@ -48,8 +48,7 @@
                     </div>
                   <?php else: ?>
                     <a href="./login.php" class="text-light text-decoration-none mx-2"><b>Login</b></a> | 
-                    <a href="./register.php" class="text-light text-decoration-none mx-2"><b>Register</b></a> | 
-                    <a href="./admin/login.php" class="text-light text-decoration-none mx-2"><b>Admin</b></a>
+                    <a href="./register.php" class="text-light text-decoration-none mx-2"><b>Register</b></a>
                   <?php endif; ?>
                 </div>
             </div>
