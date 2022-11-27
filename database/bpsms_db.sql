@@ -2,9 +2,9 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Nov 13, 2022 at 04:12 AM
--- Server version: 10.4.24-MariaDB
+-- Host: localhost
+-- Generation Time: Nov 27, 2022 at 11:56 AM
+-- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.19
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -48,8 +48,7 @@ INSERT INTO `brand_list` (`id`, `name`, `image_path`, `delete_flag`, `status`, `
 (4, 'Harley Davidson', 'uploads/brands/4.png?v=1642731495', 0, 1, '2022-01-21 10:18:15', '2022-01-21 10:18:15'),
 (5, 'Ducati', 'uploads/brands/5.png?v=1642731515', 0, 1, '2022-01-21 10:18:35', '2022-01-21 10:18:35'),
 (6, 'Oil Company', 'uploads/brands/6.jpg?v=1642744467', 0, 1, '2022-01-21 13:54:27', '2022-01-21 13:54:27'),
-(7, 'Maxxis', 'uploads/brands/7.jpg?v=1642744509', 0, 1, '2022-01-21 13:55:09', '2022-01-21 13:55:09'),
-(8, 'HONDA', 'uploads/brands/8.png?v=1667823543', 0, 1, '2022-11-07 20:19:03', '2022-11-07 20:19:03');
+(7, 'Maxxis', 'uploads/brands/7.jpg?v=1642744509', 0, 1, '2022-01-21 13:55:09', '2022-01-21 13:55:09');
 
 -- --------------------------------------------------------
 
@@ -64,6 +63,13 @@ CREATE TABLE `cart_list` (
   `quantity` float NOT NULL,
   `date_added` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `cart_list`
+--
+
+INSERT INTO `cart_list` (`id`, `client_id`, `product_id`, `quantity`, `date_added`) VALUES
+(14, 1, 3, 2, '2022-01-25 11:08:50');
 
 -- --------------------------------------------------------
 
@@ -121,10 +127,7 @@ CREATE TABLE `client_list` (
 
 INSERT INTO `client_list` (`id`, `firstname`, `middlename`, `lastname`, `gender`, `contact`, `address`, `email`, `password`, `status`, `delete_flag`, `date_created`, `date_added`) VALUES
 (1, 'John', 'D', 'Smith', 'Male', '09123456897', 'This is my sample address only', 'jsmith@sample.com', '1254737c076cf867dc53d60a0364f38e', 1, 0, '2022-01-24 13:33:44', '2022-01-25 13:15:11'),
-(2, 'juan', '', 'santos', 'Male', '09776621929', 'lubao, pampanga', 'chopshop750@gmail.com', '42f749ade7f9e195bf475f37a44cafcb', 1, 0, '2022-11-06 11:29:45', '2022-11-06 12:42:58'),
-(3, 'sample', 'sample', 'Male', '', '', 'sample', '', '4e91b1cbe42b5c884de47d4c7fda0555', 1, 0, '2022-11-07 19:52:14', NULL),
-(4, 'sample', 'sample', 'Male', '', 'sample', 'sample', 'sample@gmail.com', '5e8ff9bf55ba3508199d22e984129be6', 1, 0, '2022-11-07 19:54:40', NULL),
-(5, 'sfg', 'ffsg', 'sfgsfg', 'Female', 'sfgsfg', 'sfgsdfg', 'andrei.m.@gmail.com', '42f749ade7f9e195bf475f37a44cafcb', 1, 0, '2022-11-12 08:47:24', NULL);
+(2, 'juan', '', 'santos', 'Male', '09776621929', 'lubao, pampanga', 'chopshop750@gmail.com', '42f749ade7f9e195bf475f37a44cafcb', 1, 0, '2022-11-06 11:29:45', '2022-11-06 12:42:58');
 
 -- --------------------------------------------------------
 
@@ -162,6 +165,17 @@ CREATE TABLE `order_items` (
   `quantity` float NOT NULL DEFAULT 0,
   `date_added` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_items`
+--
+
+INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `date_added`) VALUES
+(8, 6, 1, 1, '2022-01-24 16:37:18'),
+(9, 6, 4, 2, '2022-01-24 16:37:18'),
+(10, 7, 4, 2, '2022-01-25 10:43:19'),
+(11, 7, 3, 4, '2022-01-25 10:43:19'),
+(13, 9, 3, 1, '2022-11-06 11:34:37');
 
 -- --------------------------------------------------------
 
@@ -215,10 +229,11 @@ CREATE TABLE `product_list` (
 --
 
 INSERT INTO `product_list` (`id`, `brand_id`, `category_id`, `name`, `models`, `description`, `price`, `status`, `image_path`, `delete_flag`, `date_created`, `date_updated`) VALUES
-(12, 8, 1, 'Momo Prototipo Steering Wheel (Black)', 'HONDA', '&lt;p&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0.8); font-family: Roboto, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, 文泉驛正黑, &amp;quot;WenQuanYi Zen Hei&amp;quot;, &amp;quot;Hiragino Sans GB&amp;quot;, &amp;quot;儷黑 Pro&amp;quot;, &amp;quot;LiHei Pro&amp;quot;, &amp;quot;Heiti TC&amp;quot;, 微軟正黑體, &amp;quot;Microsoft JhengHei UI&amp;quot;, &amp;quot;Microsoft JhengHei&amp;quot;, sans-serif; font-size: 14px; white-space: pre-wrap;&quot;&gt;ACTUAL PHOTOS POSTED\r\nBrandnew MOMO Prototipo steering wheel\r\n100% Excellent Quality\r\n14&amp;nbsp;inches Diameter\r\nColor: Black\r\nUniversal Fitment\r\nFor all types of vehicle with Bosskit HUB adaptor\r\nBosskit Hub adaptor Sold Separately\r\nChat Us for any Question and Installation Concern\r\nPackage Includes:\r\n1pc- Momo Prototipo Black&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 2290, 1, 'uploads/products/12.PNG?v=1668234769', 0, '2022-11-12 14:32:49', '2022-11-12 14:32:49'),
-(13, 8, 1, 'Honda BR-V Car Cover Honda BRV High Density Oxford Fabric Water Resistant With Zipper & Buckles YM', 'Honda BR-V', '&lt;p&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0.8); font-family: Roboto, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, 文泉驛正黑, &amp;quot;WenQuanYi Zen Hei&amp;quot;, &amp;quot;Hiragino Sans GB&amp;quot;, &amp;quot;儷黑 Pro&amp;quot;, &amp;quot;LiHei Pro&amp;quot;, &amp;quot;Heiti TC&amp;quot;, 微軟正黑體, &amp;quot;Microsoft JhengHei UI&amp;quot;, &amp;quot;Microsoft JhengHei&amp;quot;, sans-serif; font-size: 14px; white-space: pre-wrap;&quot;&gt;Advantages of our products: \r\n1. Super durable. It Does not Brittle over time\r\n2. Strong fabric makes it tearproof. \r\n3. PU coating gives good water Resistant capability. Breathable at the same time.\r\n4. One layer of Fabric makes it comparably light weight, with strong organizing bag as a part of our product, which makes it very practical and easy to organize.\r\n5. Fast Dry: Water Resistant, the PU coating inside is to enhance water resistant capability, as the test from factory, water Resistant level is 2500mm to 3000mm.\r\n6. With zipper on driver&rsquo;s side.\r\n7. Attached Straps with Buckles for windproof.\r\n8. With reflectors.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1542, 1, 'uploads/products/13.PNG?v=1668234922', 0, '2022-11-12 14:35:22', '2022-11-12 14:35:22'),
-(14, 7, 5, '175/65 R14 82H Bridgestone, Passenger Car Tire, Ecopia EP150', 'Civic / Accent / Lancer / Mirage', '&lt;p&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0.8); font-family: Roboto, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, 文泉驛正黑, &amp;quot;WenQuanYi Zen Hei&amp;quot;, &amp;quot;Hiragino Sans GB&amp;quot;, &amp;quot;儷黑 Pro&amp;quot;, &amp;quot;LiHei Pro&amp;quot;, &amp;quot;Heiti TC&amp;quot;, 微軟正黑體, &amp;quot;Microsoft JhengHei UI&amp;quot;, &amp;quot;Microsoft JhengHei&amp;quot;, sans-serif; font-size: 14px; white-space: pre-wrap;&quot;&gt;Ecopia EP150\r\n-  Tread design for small cars \r\n-  The EP150 truly reflects Bridgestone&rsquo;s advanced technology and commitment to innovation.\r\n-  Known for its low rolling resistance feature, the Ecopia EP150 is designed to deliver excellent fuel economy and low noise while maintaining Bridgestone&rsquo;s renowned safety standards.\r\n-  Up to 7.1% less CO2 emissions than the conventional tire\r\n-  Up to 2.5% better fuel consumption than the conventional tire\r\n-  Improved by 8% in wet braking performance\r\n\r\nFor Vehicles:  Honda City / Civic, Hyundai Accent, Mitsubishi Lancer / Mirage, Toyota Corolla\r\n\r\nPLEASE TAKE NOTE:  \r\n-	Nate&rsquo;s Store ships out orders within 24 hours (Except for Sundays &amp;amp; Holidays). \r\n-	Items are shipped out through Shopee\'s third party courier service.\r\n-	Once shipped out, Nate&rsquo;s Store is no longer in control of the delivery.\r\n-	However, we may assist you in tracking or following up the delivery through Shopee. \r\n\r\nFor questions or clarifications, feel free to message us.\r\nThank you for shopping at Nate&rsquo;s Store!\r\nWhere you find Good Deals!\r\n\r\nWhat is included:  One(1) piece Bridgestone Tire&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 2000, 1, 'uploads/products/14.PNG?v=1668235081', 0, '2022-11-12 14:38:01', '2022-11-12 14:38:01'),
-(15, 8, 9, 'Honda civic FD 2006 to 2011 Radiator 1.8/2.0', 'Honda civic FD 2006 to 2011', '&lt;p&gt;&lt;span style=&quot;color: rgba(0, 0, 0, 0.8); font-family: Roboto, &amp;quot;Helvetica Neue&amp;quot;, Helvetica, Arial, 文泉驛正黑, &amp;quot;WenQuanYi Zen Hei&amp;quot;, &amp;quot;Hiragino Sans GB&amp;quot;, &amp;quot;儷黑 Pro&amp;quot;, &amp;quot;LiHei Pro&amp;quot;, &amp;quot;Heiti TC&amp;quot;, 微軟正黑體, &amp;quot;Microsoft JhengHei UI&amp;quot;, &amp;quot;Microsoft JhengHei&amp;quot;, sans-serif; font-size: 14px; white-space: pre-wrap;&quot;&gt;Honda FD radiator 2006 to 2011\r\n\r\nEvercool Brand \r\nTaiwan made \r\n2 rows \r\nPlastic top/bottom &lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 3500, 1, 'uploads/products/15.PNG?v=1668235174', 0, '2022-11-12 14:39:34', '2022-11-12 14:39:34');
+(1, 1, 3, 'Crash Guard', 'Nmax V2', '&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mattis, ex in commodo rhoncus, magna felis malesuada mi, et pharetra justo enim eu sapien. Nam fermentum viverra risus, in eleifend libero ultricies sit amet. Etiam gravida lacinia tellus eget vehicula. Nunc vel risus quis leo ornare cursus. Curabitur consectetur placerat ex, nec vestibulum arcu fermentum sed. Proin ipsum ipsum, consectetur sed aliquam a, tincidunt a sapien. Proin viverra ultricies tellus id volutpat. Integer cursus ligula id massa cursus, ut commodo ipsum venenatis. Maecenas et dui sit amet lorem fermentum imperdiet. Nulla a porta urna. Vivamus ut magna nisl.&lt;/p&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px;&quot;&gt;Donec condimentum lacus nec nulla condimentum fermentum. Quisque tincidunt turpis tellus. Pellentesque pretium egestas ipsum molestie dictum. Quisque eu magna id erat fermentum pharetra vel vitae risus. Suspendisse potenti. Nullam mauris dolor, sollicitudin ut leo rutrum, dictum rutrum magna. Curabitur ut laoreet mi, scelerisque pulvinar leo. Phasellus id neque aliquam, posuere nisl sed, malesuada nibh. In euismod risus eu elit pharetra, id consequat lorem iaculis. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Phasellus nec eros est. Nunc nec erat at lectus blandit condimentum. Sed sit amet mi nisi. Donec ullamcorper, metus vulputate viverra porta, nisl lectus porta elit, eget dictum quam ipsum cursus massa. Vestibulum eget purus nec augue bibendum facilisis ac sed lacus.&lt;/p&gt;', 3500, 1, 'uploads/products/1.png?v=1667724578', 0, '2022-01-21 11:20:27', '2022-11-06 16:49:38'),
+(2, 5, 3, 'Steering Dumper', 'Sample', '&lt;p&gt;sample&lt;/p&gt;', 15000, 1, 'uploads/products/2.png?v=1642736907', 1, '2022-01-21 11:48:27', '2022-01-21 11:53:41'),
+(3, 3, 7, 'Oil 4T 10W-40 (1L)', 'Sample', '&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px;&quot;&gt;Maecenas eget condimentum metus, et faucibus turpis. Sed elementum commodo hendrerit. Nulla maximus tincidunt mi, ut convallis mauris congue sit amet. Morbi nec tincidunt sapien. Nulla metus urna, facilisis eget bibendum quis, auctor a tortor. Vestibulum eros urna, euismod ut aliquam ac, cursus sed quam. Donec accumsan tortor at velit malesuada molestie. Aenean porttitor quam nibh, pulvinar pellentesque justo tristique in. Proin nec lacinia metus. Aliquam erat volutpat. Proin egestas, ante vitae rutrum malesuada, erat nisi ultricies leo, eu viverra sem nisl in metus. Phasellus vitae risus malesuada, cursus metus ac, eleifend metus. Morbi ornare sodales fringilla. Nulla venenatis dictum felis varius commodo. Proin eu leo in eros consectetur viverra dignissim ac justo. Curabitur euismod velit sit amet ex condimentum, ut iaculis nisi consectetur.&lt;/p&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px;&quot;&gt;Ut id volutpat nulla. Aliquam eu orci at ipsum mattis mollis vel eu est. Mauris sit amet finibus tortor. Phasellus sodales massa sed erat varius, non hendrerit eros hendrerit. Pellentesque eu turpis odio. Aenean viverra justo eget eros sollicitudin porttitor. Duis convallis suscipit odio sit amet facilisis. Suspendisse nec tempus leo. Aliquam tincidunt arcu quis justo posuere ullamcorper. Integer sagittis nisi id suscipit semper. Vestibulum tempor pretium ligula, in bibendum orci tincidunt eget. Mauris aliquet porttitor consectetur. In ut neque magna. Phasellus purus elit, pretium et imperdiet eu, ultrices sit amet libero. Praesent ac ligula rhoncus massa aliquet maximus sit amet rhoncus quam. Phasellus eget tempor nisi, quis dapibus dui.&lt;/p&gt;', 520, 1, 'uploads/products/3.png?v=1642828345', 0, '2022-01-21 13:57:15', '2022-01-22 14:20:40'),
+(4, 7, 5, 'Tire 101 110/70/17', 'Any', '&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px;&quot;&gt;Vivamus euismod porttitor nisl eu tincidunt. Nulla ac enim ut risus pretium rutrum vel at augue. Nullam eu arcu luctus, elementum sapien sed, blandit mi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sodales imperdiet mauris, tincidunt molestie elit tristique sit amet. Mauris sit amet erat quis leo laoreet facilisis. Donec a egestas nibh, eget auctor ligula. Pellentesque ut nisi varius mauris dictum dictum sed nec nulla. Curabitur condimentum eros sagittis eros eleifend accumsan. Sed eu sapien sit amet nisl viverra tincidunt. Interdum et malesuada fames ac ante ipsum primis in faucibus.&lt;/p&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px;&quot;&gt;In pretium, tortor et fermentum eleifend, ante tortor rhoncus magna, ac eleifend odio libero id nibh. Etiam rutrum purus vel mattis mattis. Praesent sit amet ligula pulvinar, dapibus lorem eu, luctus augue. Cras sed libero finibus, posuere libero a, dapibus purus. Quisque dolor risus, sollicitudin nec finibus ut, ullamcorper tempor enim. Nulla auctor semper ullamcorper. Sed fringilla lectus finibus mauris ultrices cursus. Vivamus laoreet eros a purus blandit fermentum. Suspendisse ornare ipsum dictum lacus ornare, sed viverra enim pretium. Vivamus pulvinar commodo porttitor.&lt;/p&gt;', 4500, 1, 'uploads/products/4.jpg?v=1642745034', 0, '2022-01-21 14:03:54', '2022-01-21 14:03:54'),
+(5, 5, 6, 'Product 101', 'Any', '&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px;&quot;&gt;Phasellus dapibus et massa quis interdum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Aenean et nisl justo. Etiam condimentum nulla condimentum lectus vestibulum porta. Etiam maximus gravida nibh, rutrum pulvinar nulla posuere congue. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec vel ante sem. Proin suscipit rhoncus felis.&lt;/p&gt;&lt;p style=&quot;margin-right: 0px; margin-bottom: 15px; margin-left: 0px; padding: 0px; text-align: justify; color: rgb(0, 0, 0); font-family: &amp;quot;Open Sans&amp;quot;, Arial, sans-serif; font-size: 14px;&quot;&gt;Proin varius libero ut venenatis dictum. Cras finibus nibh quis egestas vestibulum. Integer pharetra dictum libero non maximus. Praesent imperdiet malesuada ante, quis tincidunt ligula. Vestibulum suscipit blandit porta. Praesent et urna neque. Nulla hendrerit nisl et diam pharetra pharetra. Sed maximus, nunc quis luctus facilisis, ex mauris aliquet magna, sit amet consectetur est dolor ac est. Integer venenatis nisl odio, nec varius lacus ornare ac. Fusce sit amet laoreet est. Suspendisse potenti.&lt;/p&gt;', 10000, 1, 'uploads/products/5.png?v=1642828905', 0, '2022-01-22 13:21:45', '2022-01-22 13:21:45');
 
 -- --------------------------------------------------------
 
@@ -248,13 +263,7 @@ INSERT INTO `request_meta` (`request_id`, `meta_field`, `meta_value`) VALUES
 (5, 'vehicle_registration_number', 'TEST123'),
 (5, 'vehicle_model', 'test'),
 (5, 'service_id', '3'),
-(5, 'pickup_address', 'Sample Address'),
-(6, 'vehicle_type', 'sample'),
-(6, 'vehicle_name', 'sample'),
-(6, 'vehicle_registration_number', 'sample'),
-(6, 'vehicle_model', 'sample'),
-(6, 'service_id', '3'),
-(6, 'pickup_address', '');
+(5, 'pickup_address', 'Sample Address');
 
 -- --------------------------------------------------------
 
@@ -276,10 +285,10 @@ CREATE TABLE `service_list` (
 --
 
 INSERT INTO `service_list` (`id`, `service`, `description`, `status`, `delete_flag`, `date_created`) VALUES
-(1, 'Change Oil', '&lt;p&gt;&lt;span style=&quot;color: rgb(189, 193, 198); font-family: arial, sans-serif; background-color: rgb(32, 33, 36);&quot;&gt;An Oil Change is&amp;nbsp;&lt;/span&gt;&lt;b style=&quot;color: rgb(189, 193, 198); font-family: arial, sans-serif; background-color: rgb(32, 33, 36);&quot;&gt;the act of removing the used oil in your engine and replacing it with new, clean oil&lt;/b&gt;&lt;span style=&quot;color: rgb(189, 193, 198); font-family: arial, sans-serif; background-color: rgb(32, 33, 36);&quot;&gt;. Over time, oil breaks down and gets dirty. These factors make oil much less slippery and less effective at their job of lubricating engine parts.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, 0, '2021-09-30 14:11:21'),
-(2, 'Overall Checkup', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Curabitur nec viverra tellus. Donec quis molestie arcu. Sed et blandit dui, vel vehicula tortor. Vivamus fringilla sit amet nibh fringilla ornare. Etiam iaculis ornare purus id feugiat. Etiam mattis erat ut congue tempor. Nam placerat faucibus libero ultrices posuere. Donec ac tempus nulla.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, 1, '2021-09-30 14:11:38'),
-(3, 'Engine Tune up', '&lt;p&gt;&lt;span style=&quot;color: rgb(189, 193, 198); font-family: arial, sans-serif; background-color: rgb(32, 33, 36);&quot;&gt;engine tune-ups include&amp;nbsp;&lt;/span&gt;&lt;b style=&quot;color: rgb(189, 193, 198); font-family: arial, sans-serif; background-color: rgb(32, 33, 36);&quot;&gt;checking, diagnosing, and replacing bad spark plugs, spark plug wires, distributor caps, fuel filters, air filters, and oil filters&lt;/b&gt;&lt;span style=&quot;color: rgb(189, 193, 198); font-family: arial, sans-serif; background-color: rgb(32, 33, 36);&quot;&gt;. Tune-ups can also include checking emission levels, fuel lines, wiring, coolant hoses, and serpentine belts.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, 0, '2021-09-30 14:12:03'),
-(4, 'Tire Replacement', '&lt;p&gt;&lt;span style=&quot;color: rgb(189, 193, 198); font-family: arial, sans-serif; background-color: rgb(32, 33, 36);&quot;&gt;&amp;nbsp;&lt;/span&gt;&lt;b style=&quot;color: rgb(189, 193, 198); font-family: arial, sans-serif; background-color: rgb(32, 33, 36);&quot;&gt;any damage to a tyre on the Vehicle which requires us to replace the tyre with a new tyre&lt;/b&gt;&lt;span style=&quot;color: rgb(189, 193, 198); font-family: arial, sans-serif; background-color: rgb(32, 33, 36);&quot;&gt;. If a Vehicle\'s tyre is punctured and is capable of being repaired&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, 0, '2021-09-30 14:12:24');
+(1, 'Change Oil', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel sapien lectus. Ut posuere, arcu eget bibendum venenatis, quam diam interdum diam, in viverra leo quam eu mi. Sed bibendum mauris nulla, vel vehicula libero elementum vel. Nam blandit justo justo, dapibus sodales risus consectetur nec. Suspendisse ornare in purus et mollis. Praesent placerat quis lectus at hendrerit. Morbi maximus dolor dolor, a maximus mi congue quis.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, 0, '2021-09-30 14:11:21'),
+(2, 'Overall Checkup', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Curabitur nec viverra tellus. Donec quis molestie arcu. Sed et blandit dui, vel vehicula tortor. Vivamus fringilla sit amet nibh fringilla ornare. Etiam iaculis ornare purus id feugiat. Etiam mattis erat ut congue tempor. Nam placerat faucibus libero ultrices posuere. Donec ac tempus nulla.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, 0, '2021-09-30 14:11:38'),
+(3, 'Engine Tune up', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Sed ultrices fermentum augue. Duis ultricies arcu vitae lorem accumsan porta. Donec fermentum risus ut tincidunt cursus. Sed varius id dolor et euismod. Vestibulum elit massa, varius nec arcu vel, viverra varius dolor. Etiam fermentum vel lorem vel tincidunt. Ut nec libero pulvinar, malesuada lacus et, tempor diam. Aliquam vitae nisl augue.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, 0, '2021-09-30 14:12:03'),
+(4, 'Tire Replacement', '&lt;p&gt;&lt;span style=&quot;text-align: justify;&quot;&gt;Nullam pretium eu justo ac tincidunt. Vestibulum quis est non felis porttitor pretium. Vivamus nec augue ultrices, condimentum risus vitae, pellentesque turpis. Nullam ornare est sapien, sed semper neque imperdiet suscipit. Sed fermentum eros et felis mollis finibus. In condimentum eleifend magna, non consequat nibh viverra nec. Nulla vel sapien libero. Suspendisse varius nisl nec ornare imperdiet.&lt;/span&gt;&lt;br&gt;&lt;/p&gt;', 1, 0, '2021-09-30 14:12:24');
 
 -- --------------------------------------------------------
 
@@ -302,8 +311,7 @@ CREATE TABLE `service_requests` (
 
 INSERT INTO `service_requests` (`id`, `client_id`, `service_type`, `mechanic_id`, `status`, `date_created`) VALUES
 (4, 1, 'Drop Off', 2, 3, '2022-01-25 09:47:31'),
-(5, 1, 'Pick Up', 2, 2, '2022-01-25 10:25:23'),
-(6, 5, 'Drop Off', 1, 0, '2022-11-12 14:47:58');
+(5, 1, 'Pick Up', 1, 2, '2022-01-25 10:25:23');
 
 -- --------------------------------------------------------
 
@@ -318,6 +326,17 @@ CREATE TABLE `stock_list` (
   `type` tinyint(1) NOT NULL DEFAULT 1 COMMENT '1= IN, 2= Out',
   `date_created` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stock_list`
+--
+
+INSERT INTO `stock_list` (`id`, `product_id`, `quantity`, `type`, `date_created`) VALUES
+(1, 1, 10, 1, '2022-01-21 13:07:47'),
+(2, 1, 5, 1, '2022-01-21 13:07:55'),
+(4, 3, 30, 1, '2022-01-24 14:17:28'),
+(5, 5, 25, 1, '2022-01-24 14:17:35'),
+(8, 4, 50, 1, '2022-01-24 15:49:45');
 
 -- --------------------------------------------------------
 
@@ -336,11 +355,11 @@ CREATE TABLE `system_info` (
 --
 
 INSERT INTO `system_info` (`id`, `meta_field`, `meta_value`) VALUES
-(1, 'name', 'Chopshop Automotive Parts & Consultation Services System'),
+(1, 'name', 'Chop Shop Motorcycle Parts & Services Shop Management System'),
 (6, 'short_name', 'CHOP SHOP'),
 (11, 'logo', 'uploads/1667717760_png-clipart-engine-piston-motorcycle-helmets-motorcycle-club-custom-motorcycle-kawasaki-heavy-industries-motorcycle-emblem-photography.png'),
 (13, 'user_avatar', 'uploads/user_avatar.jpg'),
-(14, 'cover', 'uploads/1667824980_arenaev_001.jpg');
+(14, 'cover', 'uploads/1667717160_yamaha-nmax-155-2020-slant-rear-view-full-image-724584.webp');
 
 -- --------------------------------------------------------
 
@@ -477,13 +496,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `brand_list`
 --
 ALTER TABLE `brand_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `cart_list`
 --
 ALTER TABLE `cart_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `categories`
@@ -495,7 +514,7 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `client_list`
 --
 ALTER TABLE `client_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mechanics_list`
@@ -519,7 +538,7 @@ ALTER TABLE `order_list`
 -- AUTO_INCREMENT for table `product_list`
 --
 ALTER TABLE `product_list`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `service_list`
@@ -531,7 +550,7 @@ ALTER TABLE `service_list`
 -- AUTO_INCREMENT for table `service_requests`
 --
 ALTER TABLE `service_requests`
-  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `stock_list`
@@ -549,7 +568,7 @@ ALTER TABLE `system_info`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
