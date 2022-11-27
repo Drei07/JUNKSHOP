@@ -32,7 +32,7 @@ if(isset($_GET['id']) && $_GET['id'] > 0){
             <div class="card-header">
                 <h4 class="card-title">Product Details</h4>
                 <div class="card-tools">
-                    <a class="btn btn-default border btn-sm btn-flat" href="javascript:void(0)" id="add_to_cart"><i class="fa fa-cart-plus"></i> Add to Cart</a>
+                    <a class="btn btn-default border btn-sm btn-flat" href="" id="add_to_cart"><i class="fa fa-cart-plus"></i> Add to Cart</a>
                 </div>
             </div>
             <div class="card-body">
